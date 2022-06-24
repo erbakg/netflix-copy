@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { IMovie } from '../movies.types';
+import { IMovie } from '../types/movies.types';
 import { IMAGE_URL } from '../utils/consts';
 import { FaPlay } from 'react-icons/fa';
 import { InformationCircleIcon } from '@heroicons/react/outline';
