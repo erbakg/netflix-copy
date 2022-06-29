@@ -4,6 +4,8 @@ import { IMovie } from '../types/movies.types';
 import { IMAGE_URL } from '../utils/consts';
 import { FaPlay } from 'react-icons/fa';
 import { InformationCircleIcon } from '@heroicons/react/outline';
+import { useRecoilState } from 'recoil';
+import { modalState, movieState } from '../atoms/modalAtom';
 
 interface IProps {
   netflixMovies: IMovie[];
@@ -11,6 +13,8 @@ interface IProps {
 
 function Banner({ netflixMovies }: IProps) {
   const [movie, setMovie] = useState<IMovie | null>(null);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const [showModal, setShowModal] = useRecoilState(modalState);
 
   useEffect(() => {
     setMovie(netflixMovies[Math.floor(Math.random() * netflixMovies.length)]);
@@ -39,7 +43,13 @@ function Banner({ netflixMovies }: IProps) {
           Play
         </button>
 
-        <button className="bannerButton bg-[gray]/70">
+        <button
+          className="bannerButton bg-[gray]/70"
+          onClick={() => {
+            setCurrentMovie(movie);
+            setShowModal(true);
+          }}
+        >
           <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" /> More Info
         </button>
       </div>

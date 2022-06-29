@@ -17,7 +17,7 @@ export interface IMovie {
   vote_count: number;
 }
 
-export interface Element {
+export interface IElement {
   type:
     | 'Bloopers'
     | 'Featurette'
@@ -26,7 +26,7 @@ export interface Element {
     | 'Trailer'
     | 'Teaser';
 }
-export interface Genre {
+export interface IGenre {
   id: number;
   name: string;
 }
